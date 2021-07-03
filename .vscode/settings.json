@@ -1,3 +1,9 @@
 {
-  "tailwindCSS.emmetCompletions": true
+  "tailwindCSS.emmetCompletions": true,
+  "cSpell.words": [
+    "clsx",
+    "headlessui",
+    "heroicons",
+    "tailwindcss"
+  ]
 }
