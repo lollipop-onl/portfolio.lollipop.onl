@@ -2,6 +2,11 @@ name: Request Deploy to CloudFlare Pages
 on:
   workflow_dispatch:
     inputs: {}
+  repository_dispatch:
+    branches:
+      - main
+    types:
+      - deployToCloudFlarePages
 jobs:
   dispatcher:
     runs-on: ubuntu-latest
