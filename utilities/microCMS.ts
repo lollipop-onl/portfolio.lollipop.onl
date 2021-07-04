@@ -1,10 +1,13 @@
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
+import getConfig from 'next/config';
+
+const { serverRuntimeConfig } = getConfig();
 
 export type MicroCMSImage = {
   url: string;
   width: number;
   height: number;
-}
+};
 
 type MicroCMSResponseBase = {
   createdAt: string;
@@ -26,23 +29,38 @@ export type MicroCMSEndpoints = {
     summary: string;
     thumbnail?: MicroCMSImage;
     body?: string;
-    relatedLinks: Array<MicroCMSResponseBase & {
-      id: string;
-      title: string;
-      url: string;
-    }>;
+    relatedLinks: Array<
+      MicroCMSResponseBase & {
+        id: string;
+        title: string;
+        url: string;
+      }
+    >;
   }>;
   '/skills': Array<{
     permalink: string;
     name: string;
     summary?: string;
-  }>,
-}
+  }>;
+};
 
-export type MicroCMSResponse<Path extends keyof MicroCMSEndpoints> = MicroCMSEndpoints[Path] extends any[] ? { contents: Array<MicroCMSEndpoints[Path][number] & MicroCMSResponseBase & { id: string }> } : MicroCMSEndpoints[Path] & MicroCMSResponseBase;
+export type MicroCMSResponse<Path extends keyof MicroCMSEndpoints> =
+  MicroCMSEndpoints[Path] extends any[]
+    ? {
+        contents: Array<
+          MicroCMSEndpoints[Path][number] &
+            MicroCMSResponseBase & { id: string }
+        >;
+      }
+    : MicroCMSEndpoints[Path] & MicroCMSResponseBase;
 
-type FetchContent = <Path extends keyof MicroCMSEndpoints>(path: Path) => Promise<MicroCMSResponse<Path>>;
+type FetchContent = <Path extends keyof MicroCMSEndpoints>(
+  path: Path
+) => Promise<MicroCMSResponse<Path>>;
 
 export const fetchContent: FetchContent = async (path: string) => {
-  return await fetch(`https://portfolio-lollipop-onl.microcms.io/api/v1${path}`, { headers: { 'X-API-KEY': 'fd9f0264-c882-4dfe-81dd-d90adc68c42d' } }).then((res) => res.json());
+  return await fetch(
+    `https://portfolio-lollipop-onl.microcms.io/api/v1${path}`,
+    { headers: { 'X-API-KEY': serverRuntimeConfig.MICRO_CMS_API_TOKEN } }
+  ).then((res) => res.json());
 };

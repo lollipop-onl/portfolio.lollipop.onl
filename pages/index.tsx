@@ -1,15 +1,15 @@
 import React from 'react';
-import type {  GetStaticProps, InferGetStaticPropsType } from 'next'
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { ProfileSection } from '~/components/ProfileSection';
 import { AchievementSection } from '~/components/AchievementSection';
 import { DialogController } from '~/components/DialogController';
-import { fetchContent, MicroCMSResponse } from '~/utilities/microCMS'
+import { fetchContent, MicroCMSResponse } from '~/utilities/microCMS';
 
 type Props = {
   profile: MicroCMSResponse<'/profile'>;
   achievements: MicroCMSResponse<'/achievements'>;
   skills: MicroCMSResponse<'/skills'>;
-}
+};
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const [profile, achievements, skills] = await Promise.all([
@@ -22,12 +22,16 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       profile,
       achievements,
-      skills
+      skills,
     },
   };
-}
+};
 
-const IndexPage: React.VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({ profile, achievements, skills }) => {
+const IndexPage: React.VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  profile,
+  achievements,
+  skills,
+}) => {
   return (
     <div className="grid gap-16 md:gap-20">
       <p className="relative w-full text-left text-red-50">Hello World</p>

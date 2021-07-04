@@ -1,10 +1,10 @@
-import React from "react";
-import Image from "next/image";
-import { MicroCMSResponse } from "~/utilities/microCMS";
+import React from 'react';
+import Image from 'next/image';
+import { MicroCMSResponse } from '~/utilities/microCMS';
 
 type Props = {
-  profile: MicroCMSResponse<'/profile'>,
-  skills: MicroCMSResponse<'/skills'>,
+  profile: MicroCMSResponse<'/profile'>;
+  skills: MicroCMSResponse<'/skills'>;
 };
 
 export const ProfileSection: React.VFC<Props> = ({ profile, skills }) => {
@@ -39,5 +39,5 @@ export const ProfileSection: React.VFC<Props> = ({ profile, skills }) => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};

@@ -32,7 +32,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "next export",
+    "build": "next build && next export",
     "dev": "next dev -p 4300",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint --ext ts,tsx,js --fix .",
