@@ -108,7 +108,7 @@ export const DialogController: React.VFC<Props> = ({
                       {dialog.content.summary}
                     </Dialog.Description>
                     {!!dialog.content.body && (
-                      <Dialog.Description className="mt-4 text-sm">
+                      <Dialog.Description className="mt-4 text-sm whitespace-pre-line">
                         {dialog.content.body}
                       </Dialog.Description>
                     )}
