@@ -1,5 +1,4 @@
 import React, { useCallback, useMemo } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Dialog, Transition } from '@headlessui/react';
@@ -91,14 +90,13 @@ export const DialogController: React.VFC<Props> = ({
                 <div className="flex flex-col w-full max-w-screen-lg md:px-6 md:pt-6 md:flex-row">
                   <div className="relative">
                     <div className="w-full md:w-[240px] aspect-w-4 aspect-h-3">
-                      <Image
+                      <img
                         src={
                           dialog.content.thumbnail?.url ||
                           'https://placehold.jp/400x300.png'
                         }
                         alt=""
-                        layout="fill"
-                        objectFit="contain"
+                        className="absolute inset-0 object-contain w-full h-full"
                       />
                     </div>
                   </div>

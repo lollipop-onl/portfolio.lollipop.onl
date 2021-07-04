@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { MicroCMSResponse } from '~/utilities/microCMS';
 
 type Props = {
@@ -13,10 +12,10 @@ export const ProfileSection: React.VFC<Props> = ({ profile, skills }) => {
       <div className="max-w-screen-md mx-auto">
         <div className="flex flex-col md:flex-row">
           <div className="relative flex-shrink-0 w-[120px] h-[120px] overflow-hidden rounded-full mx-auto md:mx-0">
-            <Image
+            <img
               src={profile.avatar?.url || 'https://placehold.jp/320x320.png'}
               alt=""
-              layout="fill"
+              className="absolute inset-0 object-contain w-full h-full"
             />
           </div>
           <div className="px-8 mt-8 md:mt-0 md:ml-8 md:px-0">

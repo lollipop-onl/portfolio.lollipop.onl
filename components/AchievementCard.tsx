@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { MicroCMSResponse } from '~/utilities/microCMS';
 
@@ -20,11 +19,10 @@ export const AchievementCard: React.VFC<Props> = ({ achievement, onClick }) => {
     >
       <a className="group" onClick={() => onClick(achievement.id)}>
         <div className="aspect-w-4 aspect-h-3">
-          <Image
+          <img
             src={achievement.thumbnail?.url || 'https://placehold.jp/40x30.png'}
             alt=""
-            layout="fill"
-            objectFit="contain"
+            className="absolute inset-0 object-contain w-full h-full"
           />
         </div>
         <p className="mt-2 line-clamp-3 group-hover:underline">
