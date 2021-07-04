@@ -4,6 +4,7 @@
     "clsx",
     "headlessui",
     "heroicons",
+    "scrapbox",
     "tailwindcss"
   ]
 }

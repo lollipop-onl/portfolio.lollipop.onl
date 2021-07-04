@@ -21,16 +21,22 @@
     "prettier": "^2.3.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-use": "^17.2.4",
+    "tailwind-config-viewer": "^1.6.2",
     "tailwindcss": "^2.2.4",
-    "typescript": "4.3.5"
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
+    "typescript": "4.3.5",
+    "webpack-merge": "^5.8.0"
   },
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "next export",
+    "dev": "next dev -p 4300",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint --ext ts,tsx,js --fix .",
     "lint:prettier": "prettier --loglevel warn --write \"**/*.{ts,tsx,js}\"",
-    "start": "next start"
+    "predev": "yarn install --frozen-lockfile",
+    "start": "next start",
+    "tailwind-viewer": "tailwind-config-viewer -o"
   }
 }
