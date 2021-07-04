@@ -1,0 +1,16 @@
+name: Request Deploy to CloudFlare Pages
+on:
+  workflow_dispatch:
+    inputs: {}
+jobs:
+  dispatcher:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Dispatch deploy request
+        run: |
+          curl "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/${{ secrets.CLOUDFLARE_PROJECT_NAME }}/deployments" \
+            -X POST \
+            -H "content-type: application/json;charset=UTF-8" \
+            -H "X-Auth-Email: ${{ secrets.CLOUDFLARE_EMAIL }}" \
+            -H "X-Auth-Key: ${{ secrets.CLOUDFLARE_GLOBAL_API_KEY }}"
