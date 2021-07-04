@@ -9,9 +9,7 @@ module.exports = {
   webpack(config) {
     return merge(config, {
       resolve: {
-        plugins: [
-          new TsconfigPathsPlugin(),
-        ]
+        plugins: [new TsconfigPathsPlugin()],
       },
     });
   },

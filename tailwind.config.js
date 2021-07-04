@@ -7,7 +7,7 @@ module.exports = {
   darkMode: 'media',
   theme: {
     fontFamily: {
-      sans: ['Kiwi Maru', 'sans-serif']
+      sans: ['Kiwi Maru', 'sans-serif'],
     },
     fontWeight: {
       normal: 300,

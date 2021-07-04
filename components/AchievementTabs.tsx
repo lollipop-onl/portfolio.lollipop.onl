@@ -1,6 +1,6 @@
-import React from "react";
-import clsx from "clsx";
-import { motion, AnimateSharedLayout } from "framer-motion";
+import React from 'react';
+import clsx from 'clsx';
+import { motion, AnimateSharedLayout } from 'framer-motion';
 
 type Props = {
   activeTabIndex: number;
@@ -8,21 +8,23 @@ type Props = {
   onChange(index: number): void;
 };
 
-export const AchievementTabs: React.VFC<Props> = ({ tabs, activeTabIndex, onChange }) => {
+export const AchievementTabs: React.VFC<Props> = ({
+  tabs,
+  activeTabIndex,
+  onChange,
+}) => {
   const handleTabClick = (index: number) => {
     if (index !== activeTabIndex) {
       onChange(index);
     }
-  }
-  
+  };
+
   return (
     <AnimateSharedLayout>
-      <ul
-        className="flex whitespace-nowrap"
-      >
+      <ul className="flex whitespace-nowrap">
         {tabs.map(({ title }, index) => {
-          const isActive = index === activeTabIndex
-          
+          const isActive = index === activeTabIndex;
+
           return (
             <li key={index} className="relative">
               {isActive && (
@@ -45,7 +47,7 @@ export const AchievementTabs: React.VFC<Props> = ({ tabs, activeTabIndex, onChan
                 {title}
               </button>
             </li>
-          )
+          );
         })}
       </ul>
     </AnimateSharedLayout>

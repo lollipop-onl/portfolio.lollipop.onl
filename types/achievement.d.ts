@@ -1,6 +1,7 @@
 export type AchievementType = 'post' | 'npm' | 'website' | 'book' | 'other';
 
 export type Achievement = {
+  id: string;
   type: AchievementType;
   name: string;
   summary: string;
@@ -8,9 +9,9 @@ export type Achievement = {
     alt: string;
     srcDesktop: string;
     srcMobile?: string;
-  }>,
+  }>;
   links: Array<{
     text: string;
     url: string;
-  }>,
+  }>;
 };

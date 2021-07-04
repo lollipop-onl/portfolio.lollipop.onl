@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { AchievementSection } from '~/components/AchievementSection';
 
 const IndexPage: React.VFC = () => {
@@ -8,6 +8,6 @@ const IndexPage: React.VFC = () => {
       <AchievementSection />
     </div>
   );
-}
+};
 
 export default IndexPage;
