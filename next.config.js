@@ -4,7 +4,7 @@ const { merge } = require('webpack-merge');
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['placehold.jp'],
+    domains: ['placehold.jp', 'images.microcms-assets.io'],
   },
   webpack(config) {
     return merge(config, {

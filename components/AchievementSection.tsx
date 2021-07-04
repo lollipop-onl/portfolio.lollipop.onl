@@ -4,14 +4,22 @@ import { useMeasure } from 'react-use';
 import { AchievementTabs } from '~/components/AchievementTabs';
 import { AchievementCard } from '~/components/AchievementCard';
 import { ACHIEVEMENT_PERIODS } from '~/constants';
+import { MicroCMSResponse } from '~/utilities/microCMS';
 
 const TABS = ACHIEVEMENT_PERIODS.map(({ title }) => ({ title }));
 
-export const AchievementSection: React.VFC = () => {
+type Props = {
+  achievements: MicroCMSResponse<'/achievements'>;
+}
+
+export const AchievementSection: React.VFC<Props> = ({ achievements }) => {
   const [tabIndex, setTabIndex] = useState(0);
   const [activeAchievementId, setActiveAchievementId] = useState<string | null>(
     null
   );
+  const displayedAchievements = useMemo(() => achievements.contents.filter(({ period }) => {
+    return (tabIndex === 0 && period.includes('社会人')) || (tabIndex === 1 && period.includes('学生'));
+  }), [achievements.contents, tabIndex])
   const [ref, { height }] = useMeasure<HTMLDivElement>();
 
   return (
@@ -38,8 +46,8 @@ export const AchievementSection: React.VFC = () => {
                     <motion.div
                       key={index}
                       exit={{ opacity: 0 }}
-                      transition={{ delay: 0.26, duration: 0.24 }}
-                    >
+                      transition={{ duration: 0.24 }}
+                      >
                       <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -49,14 +57,14 @@ export const AchievementSection: React.VFC = () => {
                         {achievementPeriod.summary}
                       </motion.p>
                       <motion.ul className="grid mt-10 sm:grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-3 md:mt-12">
-                        {achievementPeriod.achievements.map(
+                        {displayedAchievements.map(
                           (achievement, i) => {
                             return (
                               <motion.li
-                                key={achievement.name}
+                                key={achievement.id}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ delay: i * 0.05 + 0.24 }}
+                                transition={{ delay: i * 0.05 + 0.4 }}
                               >
                                 <AchievementCard achievement={achievement} onClick={(id) => setActiveAchievementId(id)} />
                               </motion.li>
