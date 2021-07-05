@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Dialog, Transition } from '@headlessui/react';
@@ -83,6 +84,9 @@ export const DialogController: React.VFC<Props> = ({
           onClose={closeDialog}
         >
           <div className="min-h-screen px-4 text-center">
+            <Head>
+              <title>{dialog.content.name} | My Portfolio - simochee</title>
+            </Head>
             <Dialog.Overlay className="fixed inset-0" />
             <span className="inline-block h-screen align-middle">&#8203;</span>
             <div className="inline-block my-8 overflow-hidden text-left align-middle transition-all transform bg-white border shadow-xl rounded-2xl">

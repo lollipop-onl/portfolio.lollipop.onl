@@ -1,5 +1,6 @@
 import React from 'react';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import Head from 'next/head';
 import { ProfileSection } from '~/components/ProfileSection';
 import { AchievementSection } from '~/components/AchievementSection';
 import { DialogController } from '~/components/DialogController';
@@ -33,12 +34,17 @@ const IndexPage: React.VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   skills,
 }) => {
   return (
-    <div className="grid gap-16 md:gap-20">
-      <p className="relative w-full text-left text-red-50">Hello World</p>
-      <ProfileSection profile={profile} skills={skills} />
-      <AchievementSection achievements={achievements} />
-      <DialogController achievements={achievements} skills={skills} />
-    </div>
+    <>
+      <Head>
+        <title>My Portfolio - simochee</title>
+      </Head>
+      <div className="grid gap-16 md:gap-20">
+        <p className="relative w-full text-left text-red-50">Hello World</p>
+        <ProfileSection profile={profile} skills={skills} />
+        <AchievementSection achievements={achievements} />
+        <DialogController achievements={achievements} skills={skills} />
+      </div>
+    </>
   );
 };
 
