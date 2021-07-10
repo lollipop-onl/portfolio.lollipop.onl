@@ -55,6 +55,7 @@ const AchievementPage: React.VFC<Props> = ({ achievement }) => {
         <meta name="og:title" content={achievement.name} />
         <meta name="og:description" content={achievement.summary} />
         <meta name="og:type" content="website" />
+        <meta name="og:site_name" content="My Portfolio - simochee" />
         <meta
           name="og:url"
           content={`https://portfolio.lollipop.onl/?achievement=${achievement.permalink}`}
