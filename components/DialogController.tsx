@@ -120,7 +120,10 @@ export const DialogController: React.VFC<Props> = ({
                       {dialog.content.relatedLinks.map(({ id, title, url }) => (
                         <li key={id} className="first:ml-auto">
                           <Link href={url}>
-                            <a target="_blank" className="text-green-600 underline hover:no-underline">
+                            <a
+                              target="_blank"
+                              className="text-green-600 underline hover:no-underline"
+                            >
                               {title}
                             </a>
                           </Link>

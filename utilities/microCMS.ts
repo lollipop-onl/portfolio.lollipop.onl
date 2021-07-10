@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import querystring from 'querystring'
+import querystring from 'querystring';
 import getConfig from 'next/config';
 
 const { serverRuntimeConfig } = getConfig();
@@ -60,9 +60,14 @@ type FetchContent = <Path extends keyof MicroCMSEndpoints>(
   query?: Record<string, string>
 ) => Promise<MicroCMSResponse<Path>>;
 
-export const fetchContent: FetchContent = async (path: string, query?: Record<string, string> ) => {
+export const fetchContent: FetchContent = async (
+  path: string,
+  query?: Record<string, string>
+) => {
   return await fetch(
-    `https://portfolio-lollipop-onl.microcms.io/api/v1${path}?${querystring.stringify(query)}`,
+    `https://portfolio-lollipop-onl.microcms.io/api/v1${path}?${querystring.stringify(
+      query
+    )}`,
     { headers: { 'X-API-KEY': serverRuntimeConfig.MICRO_CMS_API_TOKEN } }
   ).then((res) => res.json());
 };
