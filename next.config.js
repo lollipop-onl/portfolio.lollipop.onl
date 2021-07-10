@@ -1,6 +1,8 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { merge } = require('webpack-merge');
 
+require('dotenv').config();
+
 const { MICRO_CMS_API_TOKEN } = process.env;
 
 module.exports = {

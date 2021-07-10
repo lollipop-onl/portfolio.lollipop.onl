@@ -11,6 +11,7 @@
     "@types/react": "17.0.13",
     "autoprefixer": "^10.2.6",
     "clsx": "^1.1.1",
+    "dotenv": "^10.0.0",
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",
     "eslint-config-prettier": "^8.3.0",
